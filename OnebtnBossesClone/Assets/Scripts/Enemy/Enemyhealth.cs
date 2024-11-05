@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemyhealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    public float health = 100f; 
+    GameObject scoreUIText;
+    public float health = 100f;
+    public GameObject gameManager; 
+    
+  
+
+    void Start()
+    {
+        scoreUIText = GameObject.FindGameObjectWithTag("ScoretextUI");
+
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet")) 
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(20f);
-            Destroy(collision.gameObject); 
+            scoreUIText.GetComponent<GameScore>().Score += 100;
+            Destroy(collision.gameObject);
         }
     }
 
-    void TakeDamage(float damage)
-    {
-        health -= damage; 
-        if (health <= 0)
-        {
-            Die(); 
-        }
-    }
-
+  
     void Die()
     {
-        
         Debug.Log("Enemigo derrotado");
-        Time.timeScale = 0; 
-}
+        // Puedes agregar más lógica aquí, como desactivar o destruir el enemigo
+        gameObject.SetActive(false); // Desactivar el enemigo
+        // o usa Destroy(gameObject); para eliminarlo completamente
     }
+}

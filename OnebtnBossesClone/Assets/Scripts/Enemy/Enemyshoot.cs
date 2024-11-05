@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Enemyshoot : MonoBehaviour
 {
-    public Transform[] shootingPoints; // Array de puntos de disparo (hijos)
-    public GameObject projectilePrefab; // Prefab del proyectil a disparar
-    public float shootingInterval = 1.5f; // Intervalo general de disparo entre los puntos
+    public Transform[] shootingPoints; 
+    public GameObject projectilePrefab; 
+    public float shootingInterval = 1.5f; 
     
     private void Start()
     {
