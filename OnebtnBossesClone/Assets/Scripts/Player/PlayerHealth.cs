@@ -15,7 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public Text LivesUIText;
     const int MaxLives = 3;
     int lives;
-    
+    public Speedpowerup powerUpPlayer;
+
     public void Init()
     {
        
@@ -24,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
         transform.position = new Vector2(0, 0);
         gameObject.SetActive(true);
+        powerUpPlayer = GetComponent<Speedpowerup>();
     }
     void Start()
     {
@@ -39,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "EnemyBullet")
+        if (!powerUpPlayer.isInvulnerable && collision.tag == "EnemyBullet")
         {
             Debug.Log("Colisión con bala detectada");
 

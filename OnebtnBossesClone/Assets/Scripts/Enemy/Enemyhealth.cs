@@ -1,36 +1,55 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    GameObject scoreUIText;
     public float health = 100f;
-    public GameObject gameManager; 
-    
-  
+    private VictoryScreen victoryScreen;
+    public Enemyshoot enemyshoot;
+   public BossEnemy bossEnemy;
 
     void Start()
     {
-        scoreUIText = GameObject.FindGameObjectWithTag("ScoretextUI");
-
+        StartCoroutine(switchshoot());
+        victoryScreen = FindObjectOfType<VictoryScreen>(); // Obtener la referencia de VictoryScreen
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            scoreUIText.GetComponent<GameScore>().Score += 100;
+            TakeDamage(25f);
             Destroy(collision.gameObject);
         }
     }
 
-  
+    void TakeDamage(float damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public IEnumerator switchshoot()
+    {
+        while (true)
+        {
+            enemyshoot.enabled = true; 
+            bossEnemy.enabled = false;
+            yield return new WaitForSeconds(2f);
+            enemyshoot.enabled = false;
+            bossEnemy.enabled = true;
+            yield return new WaitForSeconds(2f);
+
+
+        }
+    }
     void Die()
     {
-        Debug.Log("Enemigo derrotado");
-        // Puedes agregar más lógica aquí, como desactivar o destruir el enemigo
-        gameObject.SetActive(false); // Desactivar el enemigo
-        // o usa Destroy(gameObject); para eliminarlo completamente
+        victoryScreen.ShowVictoryScreen();
+        Destroy(gameObject);
     }
 }

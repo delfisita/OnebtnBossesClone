@@ -3,27 +3,27 @@ using UnityEngine.UI;
 
 public class VictoryScreen : MonoBehaviour
 {
-    public GameObject victoryPanel; // Panel de victoria
-    public Text totalTimeText; // Texto para el tiempo total
-    public Text bestTimeText; // Texto para el mejor tiempo
+    public GameObject victoryPanel;
+    public Text totalTimeText;
+    public Text bestTimeText;
 
-    private GameTimer gameTimer; // Referencia al GameTimer
-    private float bestTime = Mathf.Infinity; // Inicializar el mejor tiempo como infinito
+    private GameTimer gameTimer;
+    private float bestTime = Mathf.Infinity;
 
     void Start()
     {
-        gameTimer = FindObjectOfType<GameTimer>(); // Obtener el GameTimer
+        gameTimer = FindObjectOfType<GameTimer>();
+        victoryPanel.SetActive(false); // Asegurarse de que el panel esté inactivo al inicio
     }
 
     public void ShowVictoryScreen()
     {
-        victoryPanel.SetActive(true); // Activar el panel de victoria
-        totalTimeText.text = "Tiempo total: " + FormatTime(gameTimer.timeElapsed); // Mostrar el tiempo total
+        victoryPanel.SetActive(true);
+        totalTimeText.text = "Tiempo total: " + FormatTime(gameTimer.timeElapsed);
 
-        // Comparar con el mejor tiempo
         if (gameTimer.timeElapsed < bestTime)
         {
-            bestTime = gameTimer.timeElapsed; // Actualizar mejor tiempo
+            bestTime = gameTimer.timeElapsed;
             bestTimeText.text = "¡Nuevo mejor tiempo!";
         }
         else

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject GameOver;
     public GameObject scoreUItext;
+    
     public enum GameManagerState
     {
         Opening,
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
    
     void Start()
     {
+       
         GMState = GameManagerState.Opening;
        
         if (scoreUItext == null)
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
     {
        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
 
 
 
