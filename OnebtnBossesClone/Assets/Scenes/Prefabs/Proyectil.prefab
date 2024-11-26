@@ -137,7 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootSpeed: 50
   _projectileDamage: 10
-  _lifeTime: 2
 --- !u!50 &-1050520755030531870
 Rigidbody2D:
   serializedVersion: 4
@@ -178,4 +177,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3648840608556624807}
-  amountToPool: 4
+  amountToPool: 100

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -13,8 +14,10 @@ public class PoolingObjects : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if 
+            (Instance == null)
             Instance = this;
+        
         else
             Destroy(gameObject);
 
@@ -42,15 +45,33 @@ public class PoolingObjects : MonoBehaviour
 
     public GameObject GetPooledObject(string prefabName)
     {
-        if (pooledObjectsDictionary.ContainsKey(prefabName) && pooledObjectsDictionary[prefabName].Count > 0)
+        if (pooledObjectsDictionary.ContainsKey(prefabName) )
         {
-            GameObject objectToReuse = pooledObjectsDictionary[prefabName].Dequeue();
-            objectToReuse.SetActive(true);
-            pooledObjectsDictionary[prefabName].Enqueue(objectToReuse);
-            return objectToReuse;
+            Queue<GameObject>objectPool = pooledObjectsDictionary[prefabName];
+            if(objectPool.Count > 0)
+            {
+                GameObject ObjectToReuse = objectPool.Dequeue();
+                ObjectToReuse.SetActive(true);
+                objectPool.Enqueue(ObjectToReuse); 
+                return ObjectToReuse;
+
+            }
+            else
+            {
+                foreach (var pooledObject in objectsToPool)
+                {
+                    if(pooledObject.prefab.name == prefabName)
+                    {
+                        GameObject newObject = Instantiate(pooledObject.prefab);
+                        newObject.SetActive(true);
+                        pooledObjectsDictionary[prefabName].Enqueue(newObject);
+                        return newObject;
+                    }
+                }
+            }
         }
 
-        Debug.LogWarning("No objects of type " + prefabName + " available in pool.");
-        return null;
+       return null;
     }
+   
 }

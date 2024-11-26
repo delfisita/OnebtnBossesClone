@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 4
-  proyectilPrefab: {fileID: 3648840608556624807, guid: 862ed395f253ba04ca5a177ea9df9e14, type: 3}
+  proyectilPoolName: Proyectil
   target: {fileID: 142747771}
 --- !u!50 &482819722
 Rigidbody2D:
@@ -2148,7 +2148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a9603a6fbe87b498f201fb7b4d059e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToPool: []
+  objectsToPool:
+  - {fileID: -7095033035983322311, guid: 862ed395f253ba04ca5a177ea9df9e14, type: 3}
+  - {fileID: 9075974394940085904, guid: 2d94759b912a6b54796c9eb9e54659ad, type: 3}
+  - {fileID: -2611334484392816717, guid: b01ed1231d5539f48b7d34029947193f, type: 3}
+  - {fileID: 6627447848963707380, guid: 16259e5948479764c9e53de4b3190429, type: 3}
 --- !u!1 &1668238837
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,18 +6,20 @@ public class proyectil : MonoBehaviour
 {
     [SerializeField] private float shootSpeed;
     [SerializeField] private float _projectileDamage;
-    [SerializeField] private float _lifeTime;
+   
     private Transform target;
     public Transform Target { get => target; set => target = value; }
 
     private void Start()
     {
         SetRotation();
-        Destroy(gameObject, _lifeTime);
+     
     }
 
     private void Update()
     {
+        
+        
         ProjectileBehaviour();
     }
 
@@ -44,7 +46,7 @@ public class proyectil : MonoBehaviour
         if (collision.gameObject.CompareTag(("Enemy")))
 
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);   
         }
     }
 

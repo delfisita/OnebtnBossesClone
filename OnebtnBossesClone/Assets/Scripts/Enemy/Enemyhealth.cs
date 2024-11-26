@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(25f);
-            Destroy(collision.gameObject);
+          collision.gameObject.SetActive(false);
         }
     }
 
