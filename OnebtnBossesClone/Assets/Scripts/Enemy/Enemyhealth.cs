@@ -1,55 +1,45 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float health = 100f;
-    private VictoryScreen victoryScreen;
-    public Enemyshoot enemyshoot;
-   public BossEnemy bossEnemy;
+    public int maxHealth = 100;
+    private int currentHealth;
+    private GameManager gameManager;
+    public Slider healthSlider;
 
     void Start()
     {
-        StartCoroutine(switchshoot());
-        victoryScreen = FindObjectOfType<VictoryScreen>(); // Obtener la referencia de VictoryScreen
+        currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.CompareTag("Projectile"))
         {
-            TakeDamage(25f);
-          collision.gameObject.SetActive(false);
+            TakeDamage(10);
         }
     }
 
-    void TakeDamage(float damage)
+    void TakeDamage(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
+        healthSlider.value = currentHealth;
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    public IEnumerator switchshoot()
-    {
-        while (true)
-        {
-            enemyshoot.enabled = true; 
-            bossEnemy.enabled = false;
-            yield return new WaitForSeconds(2f);
-            enemyshoot.enabled = false;
-            bossEnemy.enabled = true;
-            yield return new WaitForSeconds(2f);
-
-
-        }
-    }
     void Die()
     {
-        victoryScreen.ShowVictoryScreen();
+        gameManager?.EndGame(true);
         Destroy(gameObject);
+        Time.timeScale = 0;
     }
 }

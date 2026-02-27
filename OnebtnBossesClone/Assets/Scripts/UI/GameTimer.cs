@@ -1,32 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
-    public float timeElapsed;
-    public Text timerText; 
-
-    void Start()
-    {
-        timeElapsed = 0f; 
-    }
+    public TextMeshProUGUI timerText;
+    private float elapsedTime = 0f;
+    private bool isRunning = true;
 
     void Update()
     {
-        if (Time.timeScale != 0) 
+        if (isRunning)
         {
-            timeElapsed += Time.deltaTime; 
-            UpdateTimerText(); 
+            elapsedTime += Time.deltaTime;
+            UpdateTimerDisplay();
         }
     }
 
-    void UpdateTimerText()
+    private void UpdateTimerDisplay()
     {
-        
-        float minutes = Mathf.FloorToInt(timeElapsed / 60);
-        float seconds = Mathf.FloorToInt(timeElapsed % 60);
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StopTimer()
+    {
+        isRunning = false;
+    }
+
+    public float GetElapsedTime() 
+    {
+        return elapsedTime; 
     }
 }
