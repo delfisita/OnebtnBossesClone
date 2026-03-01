@@ -1750,7 +1750,7 @@ MonoBehaviour:
   winTimeText: {fileID: 1308829353}
   bestTimeText: {fileID: 487903679}
   musicSource: {fileID: 8300000, guid: 1f4d941943b310144b74f90b53284d1d, type: 3}
-  musicVolume: 0.627
+  musicVolume: 0.357
 --- !u!1 &952873042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2780,7 @@ PrefabInstance:
       objectReference: {fileID: 309404997}
     - target: {fileID: -2204201460638876581, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: sfxVolume
-      value: 0.416
+      value: 0.363
       objectReference: {fileID: 0}
     - target: {fileID: -2204201460638876581, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: projectilePool

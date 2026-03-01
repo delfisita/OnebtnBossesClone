@@ -31,10 +31,8 @@ public class AudioManager : MonoBehaviour
     // Método para reproducir música
     public void PlayMusic(AudioClip musicClip)
     {
-        if (musicSource.isPlaying && musicSource.clip == musicClip)
-        {
-            musicSource.Stop(); // Detener si está sonando para reiniciar desde el principio
-        }
+        if (musicSource.clip == musicClip && musicSource.isPlaying)
+            return; // Ya está sonando, no hacer nada
 
         musicSource.clip = musicClip;
         musicSource.Play();
