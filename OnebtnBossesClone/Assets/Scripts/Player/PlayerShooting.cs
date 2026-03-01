@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class PlayerShooting : MonoBehaviour
             AudioManager.Instance.SetSFXVolume(sfxVolume);
         }
     }
-    private System.Collections.IEnumerator ReturnProjectileToPool(GameObject projectile, float delay)
+    private IEnumerator ReturnProjectileToPool(GameObject projectile, float delay)
     {
         yield return new WaitForSeconds(delay);
         projectilePool.ReturnObject(projectile);

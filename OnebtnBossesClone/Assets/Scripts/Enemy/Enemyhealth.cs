@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, ITakeDamage
 {
     public int maxHealth = 100;
     private int currentHealth;
-    private GameManager gameManager;
+    private GM gameManager;
     public Slider healthSlider;
 
     void Start()
@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
 
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GM>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthSlider.value = currentHealth;
@@ -42,4 +42,6 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
         Time.timeScale = 0;
     }
+
+    
 }

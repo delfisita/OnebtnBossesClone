@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class PlayerHealth1 : MonoBehaviour
+public class PlayerHealth1 : MonoBehaviour, ITakeDamage
 {
     public int maxLives = 3;
     private int currentLives;
-    private GameManager gameManager;
+    private GM gameManager;
 
     void Start()
     {
         currentLives = maxLives;
 
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GM>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +22,7 @@ public class PlayerHealth1 : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentLives -= damage;
         Debug.Log("Vidas del jugador restantes: " + currentLives);
