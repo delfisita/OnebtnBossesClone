@@ -46,7 +46,7 @@ public class BossArrowsAttack : MonoBehaviour
         StartCoroutine(ReturnToPool(arrow, 5f));
     }
 
-    private System.Collections.IEnumerator ReturnToPool(GameObject obj, float delay)
+    private IEnumerator ReturnToPool(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
         arrowsPool.ReturnObject(obj);

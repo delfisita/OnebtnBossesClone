@@ -13,7 +13,8 @@ public class EnemyShooting : MonoBehaviour
     {
         if (Time.time >= nextShootTime)
         {
-            Shoot();
+            Invoke("Shoot",2f);
+            
             nextShootTime = Time.time + shootInterval;
         }
     }
@@ -29,7 +30,7 @@ public class EnemyShooting : MonoBehaviour
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
         if (projectileComponent != null)
         {
-            projectileComponent.objectPool = projectilePool; // Asegurar la referencia
+            projectileComponent.objectPool = projectilePool; 
         }
 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();

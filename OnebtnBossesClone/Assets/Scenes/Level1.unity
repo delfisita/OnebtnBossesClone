@@ -1372,6 +1372,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1453,6 +1454,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883624b67a066994c8e75ddbf56ab945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525868612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1750,7 @@ MonoBehaviour:
   winTimeText: {fileID: 1308829353}
   bestTimeText: {fileID: 487903679}
   musicSource: {fileID: 8300000, guid: 1f4d941943b310144b74f90b53284d1d, type: 3}
-  musicVolume: 0.5
+  musicVolume: 0.627
 --- !u!1 &952873042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,7 +2780,7 @@ PrefabInstance:
       objectReference: {fileID: 309404997}
     - target: {fileID: -2204201460638876581, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: sfxVolume
-      value: 0.21
+      value: 0.416
       objectReference: {fileID: 0}
     - target: {fileID: -2204201460638876581, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: projectilePool
@@ -2821,6 +2834,10 @@ PrefabInstance:
       propertyPath: maxLives
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7740396582417977278, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
+      propertyPath: damagedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c795695fc5f99854fba1c61ed520da3e, type: 3}
     - target: {fileID: 8812039064489317498, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: m_Time
       value: 0.2
@@ -3322,8 +3339,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 913159837}
+        m_TargetAssemblyTypeName: GM, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -3803,8 +3820,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 913159837}
+        m_TargetAssemblyTypeName: GM, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:

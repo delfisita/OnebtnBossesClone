@@ -5,6 +5,7 @@ public class PlayerHealth1 : MonoBehaviour, ITakeDamage
     public int maxLives = 3;
     private int currentLives;
     private GM gameManager;
+    public AudioClip damagedSound;
 
     void Start()
     {
@@ -26,7 +27,8 @@ public class PlayerHealth1 : MonoBehaviour, ITakeDamage
     {
         currentLives -= damage;
         Debug.Log("Vidas del jugador restantes: " + currentLives);
-
+        CameraShake.Instance?.Shake(duration: 0.2f, magnitude: 0.15f);
+        AudioManager.Instance.PlaySFX(damagedSound);
         if (currentLives <= 0)
         {
             GameOver();
