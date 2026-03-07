@@ -20,7 +20,7 @@ public class GM : MonoBehaviour
     private GameTimer gameTimer;
 
     public AudioClip musicSource;
-    [Range(0, 1)] public float musicVolume = 0.5f; // Volumen inicial de música
+    [Range(0, 1)] public float musicVolume = 0.5f;
 
     void Start()
     {
@@ -28,9 +28,11 @@ public class GM : MonoBehaviour
         Time.timeScale = 0;
         gameTimer = FindObjectOfType<GameTimer>();
 
+        // FIX 3: Cargar best time Y actualizar el texto en pantalla
         if (PlayerPrefs.HasKey("BestTime"))
         {
             bestTime = PlayerPrefs.GetFloat("BestTime");
+            bestTimeText.text = "BEST TIME:  " + FormatTime(bestTime); // ? Mostrar en start screen
         }
         else
         {
@@ -60,8 +62,8 @@ public class GM : MonoBehaviour
     {
         if (musicSource != null)
         {
-            AudioManager.Instance.PlayMusic(musicSource);
             AudioManager.Instance.SetMusicVolume(musicVolume);
+            AudioManager.Instance.PlayMusic(musicSource);
         }
     }
 
@@ -71,6 +73,7 @@ public class GM : MonoBehaviour
         isGameStarted = false;
         isGameOver = true;
         gameTimer.StopTimer();
+
         float elapsedTime = gameTimer.GetElapsedTime();
 
         if (isVictory)
@@ -87,13 +90,17 @@ public class GM : MonoBehaviour
     {
         gameWinPanel.SetActive(true);
         healthSliderPanel.SetActive(false);
+
         winTimeText.text = "TIME:  " + FormatTime(elapsedTime);
 
         if (bestTime == float.MaxValue || elapsedTime < bestTime)
         {
             bestTime = elapsedTime;
             bestTimeText.text = "¡NEW BEST TIME!";
+
+            // FIX 2: Guardar Y hacer Save() para que persista en el editor
             PlayerPrefs.SetFloat("BestTime", bestTime);
+            PlayerPrefs.Save();
         }
         else
         {
@@ -133,11 +140,8 @@ public class GM : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("LevelSelectScene"); // Reemplaza "MenuScene" con el nombre de tu escena de menú
+        SceneManager.LoadScene("LevelSelectScene");
     }
 
-    void OnApplicationQuit()
-    {
-        PlayerPrefs.DeleteKey("BestTime");
-    }
+    // FIX 1: Se eliminó OnApplicationQuit que borraba el récord al cerrar
 }
