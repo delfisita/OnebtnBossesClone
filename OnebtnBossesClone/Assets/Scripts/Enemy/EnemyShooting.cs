@@ -8,12 +8,13 @@ public class EnemyShooting : MonoBehaviour
     public float shootInterval = 2f;
     public float projectileSpeed = 5f;
     private float nextShootTime = 0f;
+    public float TimeforStartShooting = 2f;
 
     void Update()
     {
         if (Time.time >= nextShootTime)
         {
-            Invoke("Shoot",2f);
+            Invoke("Shoot", TimeforStartShooting);
             
             nextShootTime = Time.time + shootInterval;
         }
@@ -25,8 +26,6 @@ public class EnemyShooting : MonoBehaviour
         GameObject projectile = projectilePool.GetObject();
         projectile.transform.position = firePoint.position;
         projectile.transform.rotation = firePoint.rotation;
-
-        // Asociar el ObjectPool con el proyectil
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
         if (projectileComponent != null)
         {

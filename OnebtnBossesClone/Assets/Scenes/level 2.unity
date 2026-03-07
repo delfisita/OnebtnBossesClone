@@ -677,8 +677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4664c21c5bb8948a63d2f6a78f09b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shape: 3
   radius: 4
   numberOfPoints: 24
+  innerRadius: 2
   pathPoints: []
 --- !u!4 &309404998
 Transform:
@@ -760,8 +762,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.37647063, g: 0.16470589, b: 0.25882354, a: 1}
-      key1: {r: 0.37647063, g: 0.16470589, b: 0.25882354, a: 1}
+      key0: {r: 0.13253415, g: 1, b: 0, a: 1}
+      key1: {r: 0.13253415, g: 1, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1398,7 +1400,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.990566, g: 0.38781592, b: 0.41953978, a: 0}
+  m_BackGroundColor: {r: 0.2519135, g: 0.2837283, b: 0.4811321, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2766,6 +2768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6619453808331176024, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -3780357541651086814, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: startDelay
       value: 0.05
@@ -3255,6 +3261,7 @@ MonoBehaviour:
   firePoint: {fileID: 840039498347565234}
   shootInterval: 0.15
   projectileSpeed: 6
+  TimeforStartShooting: 4
 --- !u!1 &2561109386220397450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840039498347565234}
   - component: {fileID: 5290329207896574789}
+  - component: {fileID: 5290329207896574791}
   - component: {fileID: 1895786303973392199}
   - component: {fileID: 3547594379412444228}
   - component: {fileID: 1044027032}
@@ -3462,6 +3470,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9, y: 2.39}
   m_EdgeRadius: 0
+--- !u!114 &5290329207896574791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108483434861265743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e117650ba2868a24ba4d85631840a186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePool: {fileID: 952873044}
+  firePoint: {fileID: 840039498347565234}
+  timeBetweenBursts: 5
+  timeForStartShooting: 4
+  burstDuration: 3
+  fireRate: 0.12
+  projectileSpeed: 10
+  returnDelay: 3
+  pattern: 0
+  rotationOffset: 0
+  rotationSpeed: 45
 --- !u!114 &5301187419382140636
 MonoBehaviour:
   m_ObjectHideFlags: 0
