@@ -677,8 +677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4664c21c5bb8948a63d2f6a78f09b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shape: 0
   radius: 4
   numberOfPoints: 24
+  innerRadius: 2
   pathPoints: []
 --- !u!4 &309404998
 Transform:
@@ -1706,6 +1708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913159836}
   - component: {fileID: 913159837}
+  - component: {fileID: 913159838}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1749,8 +1752,20 @@ MonoBehaviour:
   powerupPanel: {fileID: 3273386514619755229, guid: 7437e09fd1610c049996b84dd16269ff, type: 3}
   winTimeText: {fileID: 1308829353}
   bestTimeText: {fileID: 487903679}
-  musicSource: {fileID: 8300000, guid: 1f4d941943b310144b74f90b53284d1d, type: 3}
+  musicSource: {fileID: 8300000, guid: 78bfe33395a9cca4087883b84acd356a, type: 3}
   musicVolume: 0.357
+--- !u!114 &913159838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913159835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c28557b36d354a469a3ee3b3f73bb0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &952873042
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,8 +2342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913159837}
-        m_TargetAssemblyTypeName: GM, Assembly-CSharp
+      - m_Target: {fileID: 913159838}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -3086,8 +3101,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913159837}
-        m_TargetAssemblyTypeName: GM, Assembly-CSharp
+      - m_Target: {fileID: 913159838}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -3276,6 +3291,7 @@ MonoBehaviour:
   firePoint: {fileID: 840039498347565234}
   shootInterval: 0.15
   projectileSpeed: 6
+  TimeforStartShooting: 2
 --- !u!1 &2561109386220397450
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,8 +3355,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913159837}
-        m_TargetAssemblyTypeName: GM, Assembly-CSharp
+      - m_Target: {fileID: 913159838}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -3363,7 +3379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce5b8f910cf7a9428041ca9d7f3b5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 800
+  maxHealth: 500
   healthSlider: {fileID: 803256904}
 --- !u!4 &3661084218579816768
 Transform:
@@ -3820,8 +3836,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913159837}
-        m_TargetAssemblyTypeName: GM, Assembly-CSharp
+      - m_Target: {fileID: 913159838}
+        m_TargetAssemblyTypeName: Scenes, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
