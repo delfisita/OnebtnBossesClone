@@ -1751,7 +1751,7 @@ MonoBehaviour:
   powerupPanel: {fileID: 3273386514619755229, guid: 7437e09fd1610c049996b84dd16269ff, type: 3}
   winTimeText: {fileID: 1308829353}
   bestTimeText: {fileID: 487903679}
-  musicSource: {fileID: 8300000, guid: 1f4d941943b310144b74f90b53284d1d, type: 3}
+  musicSource: {fileID: 8300000, guid: 8a94f378f18b0644db6c56150f5d0814, type: 3}
   musicVolume: 0.357
 --- !u!1 &952873042
 GameObject:
@@ -2770,7 +2770,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6619453808331176024, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3780357541651086814, guid: 63441e3e9ba9dfa4fa9b66072c929b1a, type: 3}
       propertyPath: startDelay
@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce5b8f910cf7a9428041ca9d7f3b5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 800
+  maxHealth: 2000
   healthSlider: {fileID: 803256904}
 --- !u!1 &5108483434861265743
 GameObject:
