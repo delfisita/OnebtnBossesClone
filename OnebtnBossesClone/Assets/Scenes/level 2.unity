@@ -3486,13 +3486,12 @@ MonoBehaviour:
   firePoint: {fileID: 840039498347565234}
   timeBetweenBursts: 5
   timeForStartShooting: 4
-  burstDuration: 3
+  burstDuration: 9
   fireRate: 0.12
   projectileSpeed: 10
   returnDelay: 3
   pattern: 0
-  rotationOffset: 0
-  rotationSpeed: 45
+  rotationSpeed: 20
 --- !u!114 &5301187419382140636
 MonoBehaviour:
   m_ObjectHideFlags: 0

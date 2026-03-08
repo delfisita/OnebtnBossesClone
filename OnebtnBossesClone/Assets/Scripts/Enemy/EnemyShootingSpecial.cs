@@ -9,10 +9,10 @@ public class EnemyShootingSpecial : MonoBehaviour
     public Transform firePoint;
 
     [Header("Timing")]
-    public float timeBetweenBursts = 5f;    // Cada cuánto se activa la ráfaga
-    public float timeForStartShooting = 4f; // Delay inicial antes del primer disparo
-    public float burstDuration = 3f;        // Cuántos segundos dura la ráfaga
-    public float fireRate = 0.12f;          // Tiempo entre cada salva dentro de la ráfaga
+    public float timeBetweenBursts = 5f;
+    public float timeForStartShooting = 4f;
+    public float burstDuration = 3f;
+    public float fireRate = 0.12f;
 
     [Header("Projectile")]
     public float projectileSpeed = 6f;
@@ -20,17 +20,17 @@ public class EnemyShootingSpecial : MonoBehaviour
 
     [Header("Cross Settings")]
     public CrossPattern pattern = CrossPattern.Cross4;
-    public float rotationOffset = 0f;
-    public float rotationSpeed = 60f;       // Solo para Cross4Rotating (grados/segundo)
+    public float rotationSpeed = 60f;
+
 
     public enum CrossPattern
     {
-        Cross4,          // + estático
-        Cross8,          // * estático
-        Cross4Rotating   // + que gira mientras dispara
+        Cross4,
+        Cross8,
+        Cross4Rotating
     }
 
-    private float rotationAccumulator = 0f;
+    private float rotationOffset = 0f;
 
     void Start()
     {
@@ -39,15 +39,12 @@ public class EnemyShootingSpecial : MonoBehaviour
 
     IEnumerator BurstLoop()
     {
-        // Delay inicial
+        
         yield return new WaitForSeconds(timeForStartShooting);
 
         while (true)
         {
-            // Disparar en ráfaga durante burstDuration segundos
             yield return StartCoroutine(DoBurst());
-
-            // Esperar antes de la siguiente ráfaga
             yield return new WaitForSeconds(timeBetweenBursts);
         }
     }
@@ -55,16 +52,16 @@ public class EnemyShootingSpecial : MonoBehaviour
     IEnumerator DoBurst()
     {
         float elapsed = 0f;
+        rotationOffset = 0f; 
 
         while (elapsed < burstDuration)
         {
-            if (pattern == CrossPattern.Cross4Rotating)
-                rotationAccumulator += rotationSpeed * fireRate;
-
+            
             ShootCross();
-
+            rotationOffset += rotationSpeed * fireRate; 
             yield return new WaitForSeconds(fireRate);
             elapsed += fireRate;
+            
         }
     }
 
@@ -78,12 +75,7 @@ public class EnemyShootingSpecial : MonoBehaviour
                 angles = new float[] { 0, 45, 90, 135, 180, 225, 270, 315 };
                 break;
 
-            case CrossPattern.Cross4Rotating:
-                float r = rotationAccumulator;
-                angles = new float[] { r, r + 90f, r + 180f, r + 270f };
-                break;
-
-            default: // Cross4
+            default: 
                 angles = new float[] { 0, 90, 180, 270 };
                 break;
         }
